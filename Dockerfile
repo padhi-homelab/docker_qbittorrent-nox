@@ -23,6 +23,7 @@ COPY setup-volume.sh        /etc/docker-entrypoint.d/
 RUN chmod +x /usr/local/bin/qbittorrent \
              /etc/docker-entrypoint.d/setup-volume.sh \
  && apk add --no-cache --update \
+            python3 \
             tzdata \
  && apk add --no-cache --update \
             --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
