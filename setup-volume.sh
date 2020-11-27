@@ -9,5 +9,5 @@ if ! [ -f "/config/ipfilter.p2p" ]; then
 fi
 
 if [ -z "${ENTRYPOINT_RUN_AS_ROOT:-}" ]; then
-    chown -R $DOCKER_USER:$DOCKER_GROUP /config /data
+    chown -R $DOCKER_USER:$DOCKER_GROUP /config /data /torrents
 fi

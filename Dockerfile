@@ -31,7 +31,7 @@ RUN chmod +x /usr/local/bin/qbittorrent \
 
 
 EXPOSE 8080
-VOLUME [ "/config", "/data/complete", "/data/incomplete" ]
+VOLUME [ "/config", "/data", "/torrents/complete", "/torrents/incomplete" ]
 
 
 CMD [ "qbittorrent" ]
