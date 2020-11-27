@@ -2,6 +2,7 @@
 
 <a href='https://microbadger.com/images/padhihomelab/qbittorrent-nox'><img src='https://img.shields.io/microbadger/layers/padhihomelab/qbittorrent-nox/latest?logo=docker&logoWidth=24&style=for-the-badge'></img></a>
 <a href='https://hub.docker.com/r/padhihomelab/qbittorrent-nox'><img src='https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest?label=size%20%5Blatest%5D&logo=docker&logoWidth=24&style=for-the-badge'></img></a>
+<a href='https://hub.docker.com/r/padhihomelab/qbittorrent-nox'><img src='https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest-core?label=size%20%5Bcore%5D&logo=docker&logoWidth=24&style=for-the-badge'></img></a>
 
 A multiarch [qBittorrent] Docker image, based on [Alpine Linux], with level 1,2,3 IPFilter [block lists].
 
@@ -9,16 +10,18 @@ A multiarch [qBittorrent] Docker image, based on [Alpine Linux], with level 1,2,
 | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
-
+_The `-core` images come with IPFilter block lists, but not Python3 (needed for search plugins)._
 
 ## Usage
 
 ```
-docker run --rm --detach \
+docker run --detach \
            -p 8080:8080 \
            -e DOCKER_UID=`id -u` \
-           -v /path/to/finished/downloads:/data/complete \
-           -v /path/to/incomplete/downloads:/data/incomplete \
+           -v /path/to/store/configs:/configs \
+           -v /path/to/store/data/and/logs:/data \
+           -v /path/to/finished/downloads:/torrents/complete \
+           -v /path/to/incomplete/downloads:/torrents/incomplete \
            -it padhihomelab/qbittorrent-nox
 ```
 
