@@ -1,4 +1,4 @@
-# docker_qbittorrent-nox <a href='https://github.com/padhi-homelab/docker_qbittorrent-nox/actions?query=workflow%3A%22Docker+CI+Release%22'><img align='right' src='https://img.shields.io/github/workflow/status/padhi-homelab/docker_qbittorrent-nox/Docker%20CI%20Release?logo=github&logoWidth=24&style=flat-square'></img></a>
+# docker_qbittorrent-nox <a href='https://github.com/padhi-homelab/docker_qbittorrent-nox/actions?query=workflow%3A%22Docker+CI+Release+%28Latest%29%22'><img align='right' src='https://img.shields.io/github/workflow/status/padhi-homelab/docker_qbittorrent-nox/Docker%20CI%20Release%20(Latest)?logo=github&logoWidth=24&style=flat-square'></img></a> <a href='https://github.com/padhi-homelab/docker_qbittorrent-nox/actions?query=workflow%3A%22Docker+CI+Release+%28Core%29%22'><img align='right' src='https://img.shields.io/github/workflow/status/padhi-homelab/docker_qbittorrent-nox/Docker%20CI%20Release%20(Core)?logo=github&logoWidth=24&style=flat-square'></img></a>
 
 <a href='https://microbadger.com/images/padhihomelab/qbittorrent-nox'><img src='https://img.shields.io/microbadger/layers/padhihomelab/qbittorrent-nox/latest?logo=docker&logoWidth=24&style=for-the-badge'></img></a>
 <a href='https://hub.docker.com/r/padhihomelab/qbittorrent-nox'><img src='https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest?label=size%20%5Blatest%5D&logo=docker&logoWidth=24&style=for-the-badge'></img></a>
@@ -10,7 +10,7 @@ A multiarch [qBittorrent] Docker image, based on [Alpine Linux], with level 1,2,
 | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
-_The `-core` images come with IPFilter block lists, but not Python3 (needed for search plugins)._
+_The `-core` images contain IPFilter block lists, but no `python3` (needed for search plugins) and `tzdata`._
 
 ## Usage
 

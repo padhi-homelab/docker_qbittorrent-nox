@@ -8,8 +8,8 @@ if ! [ -d "$HOME/.config/qBittorrent" ]; then
 fi
 
 if ! [ -d "$HOME/.local/share/data/qBittorrent" ]; then
-    mkdir -p $HOME/.local/share/data
-    ln -s /data $HOME/.local/share/data/qBittorrent
+    mkdir -p $HOME/.local/share
+    ln -s /data $HOME/.local/share/qBittorrent
 fi
 
 qbittorrent-nox --webui-port=8080
