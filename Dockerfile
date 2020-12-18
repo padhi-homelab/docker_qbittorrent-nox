@@ -1,4 +1,4 @@
-FROM padhihomelab/alpine-base:edge AS qbittorrent-build
+FROM alpine:edge AS qbittorrent-build
 
 ARG QBITTORRENT_VERSION=4.3.1
 ARG QBITTORRENT_SHA_512=078efb45ec65d7e1342624e71d11fc93516925b08084907266cb6154623bc8b817ecae0ce99489c48b294f8c94f5f6c5ea3f24a9a6ad005fe3249e2a67d0b815
