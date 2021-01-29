@@ -27,7 +27,7 @@ RUN cd /tmp \
  && make
 
 
-FROM alpine:3.12 AS ipfilter-build
+FROM alpine:3.13.1 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
