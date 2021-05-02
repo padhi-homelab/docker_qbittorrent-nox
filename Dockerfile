@@ -1,12 +1,10 @@
 FROM alpine:edge AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=4.3.3
-ARG QBITTORRENT_SHA_512=58898760814a42b81ffbc7e108a29d8ea6a3f1603b84967ceb9fa489683eb67679e4e8d5e54581a01f8452e68c8385ce3991cc489b7bb13a8bb82169e3059bc4
+ARG QBITTORRENT_VERSION=4.3.4.1
+ARG QBITTORRENT_SHA_512=f1f2d6dd445b37b7397f38f965221d2f440e3aae208f19508d9b68c507f2461216bba7240f1ead21fa5ab4c08c437dc9f2b4030daca6c27a20ad0c4e66c6ecc0
 
 ADD https://github.com/qbittorrent/qBittorrent/archive/release-${QBITTORRENT_VERSION}.tar.gz \
     /tmp/qbittorrent.tar.gz
-ADD https://github.com/qbittorrent/qBittorrent/archive/release-${QBITTORRENT_VERSION}.tar.gz \
-    /tmp/qbittorrent.asc
 
 # See: https://git.alpinelinux.org/aports/tree/testing/qbittorrent-nox/APKBUILD
 RUN cd /tmp \
@@ -27,14 +25,14 @@ RUN cd /tmp \
  && make
 
 
-FROM alpine:3.12 AS ipfilter-build
+FROM alpine:3.13 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
     coreutils \
     git \
  && git clone https://github.com/fonic/ipfilter.git /ipfilter \
- && cd /ipfilter \
+ && cd /ipfilter/sources \
  && ./ipfilter.sh
 
 
@@ -45,7 +43,7 @@ COPY --from=qbittorrent-build \
      /tmp/qbittorrent/src/qbittorrent-nox \
      /usr/bin
 COPY --from=ipfilter-build \
-     /ipfilter/ipfilter.p2p /
+     /ipfilter/sources/ipfilter.p2p /
 
 COPY qBittorrent.conf       /
 COPY qbittorrent.sh         /usr/local/bin/qbittorrent
