@@ -1,7 +1,7 @@
 FROM padhihomelab/alpine-base:edge AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=4.3.4.1
-ARG QBITTORRENT_SHA_512=f1f2d6dd445b37b7397f38f965221d2f440e3aae208f19508d9b68c507f2461216bba7240f1ead21fa5ab4c08c437dc9f2b4030daca6c27a20ad0c4e66c6ecc0
+ARG QBITTORRENT_VERSION=4.3.5
+ARG QBITTORRENT_SHA_512=7bfc9e280e70093b74dafae9a6f921cf27f6828ea03ac3510c3419131b40a1610090d335a831697c9b690f47e396700f7b5a4b14dec47a9f12f4ed797f30d0dd
 
 ADD https://github.com/qbittorrent/qBittorrent/archive/release-${QBITTORRENT_VERSION}.tar.gz \
     /tmp/qbittorrent.tar.gz
@@ -25,7 +25,7 @@ RUN cd /tmp \
  && make
 
 
-FROM alpine:3.12 AS ipfilter-build
+FROM alpine:3.14 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
