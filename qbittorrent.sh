@@ -12,4 +12,4 @@ if ! [ -d "$HOME/.local/share/data/qBittorrent" ]; then
     ln -s /data $HOME/.local/share/qBittorrent
 fi
 
-qbittorrent-nox --webui-port=8080
+qbittorrent-nox --webui-port=8080 "$@"
