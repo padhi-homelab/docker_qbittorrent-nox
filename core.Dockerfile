@@ -1,7 +1,7 @@
 FROM alpine:3.14 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=4.3.7
-ARG QBITTORRENT_SHA_512=53a7bd7b21f0439d9407e8c823086004c1f01d856903e22a7f5a5b97c5ef39f807d6168158af1eb008fab21c78f7c81b8d8e142a3f3f74d5232653f43559cafd
+ARG QBITTORRENT_VERSION=4.3.9
+ARG QBITTORRENT_SHA_512=ec33f67895fbf47acc2f79d9c9e16db8b96c756cf493b76eb24b90e13a790a709104ea9aa378ee111d8c38b605bed5192b366d1917bbf160b21aa2ae3aacd2d1
 
 ARG LIBTORRENT_VERSION=2.0.4
 ARG LIBTORRENT_SHA_512=66ce3c3369b1d2a83654727c23022d38b070b8bc3ad83b1001e2cfad945acbaa4d61990094bc758886967cd305ca2213b60b1b0523b5106c42d4701d8cff8db1
@@ -57,7 +57,7 @@ RUN apk add --no-cache --update \
  && ./ipfilter.sh
 
 
-FROM padhihomelab/alpine-base:3.14.1_0.19.0_0.2
+FROM padhihomelab/alpine-base:3.14.2_0.19.0_0.2
 
 
 COPY --from=qbittorrent-build \
@@ -71,12 +71,14 @@ COPY --from=ipfilter-build \
 
 COPY qBittorrent.conf       /
 COPY qbittorrent.sh         /usr/local/bin/qbittorrent
-COPY 10-setup-volume.sh     /etc/docker-entrypoint.d/
+
+COPY entrypoint-scripts \
+     /etc/docker-entrypoint.d/99-extra-scripts
 
 
 RUN chmod +x /usr/bin/qbittorrent-nox \
              /usr/local/bin/qbittorrent \
-             /etc/docker-entrypoint.d/10-setup-volume.sh \
+             /etc/docker-entrypoint.d/99-extra-scripts/*.sh \
  && apk add --no-cache --update \
             libcrypto1.1 \
             libgcc \
