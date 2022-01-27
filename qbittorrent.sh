@@ -7,7 +7,7 @@ if ! [ -d "$HOME/.config/qBittorrent" ]; then
     ln -s /config $HOME/.config/qBittorrent
 fi
 
-if ! [ -d "$HOME/.local/share/data/qBittorrent" ]; then
+if ! [ -d "$HOME/.local/share/qBittorrent" ]; then
     mkdir -p $HOME/.local/share
     ln -s /data $HOME/.local/share/qBittorrent
 fi
