@@ -26,6 +26,10 @@ docker run --detach \
 
 Runs `qbittorrent` with WebUI served on port 8080.
 
+The default login is:
+- username = `admin`
+- password = `adminadmin`
+
 _<More details to be added soon>_
 
 
