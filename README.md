@@ -16,12 +16,14 @@ _but no `python3` (needed for search plugins) and no `tzdata`._
 
 ```
 docker run --detach \
+           --name qbittorrent-nox \
            -p 8080:8080 \
            -e DOCKER_UID=`id -u` \
-           -v /path/to/store/configs:/configs \
+           -v /path/to/store/config:/config \
            -v /path/to/store/data/and/logs:/data \
            -v /path/to/finished/downloads:/torrents/complete \
            -v /path/to/incomplete/downloads:/torrents/incomplete \
+           --restart=unless-stopped \
            -it padhihomelab/qbittorrent-nox
 ```
 
