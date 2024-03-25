@@ -83,7 +83,7 @@ RUN chmod +x /usr/bin/qbittorrent-nox \
              /usr/local/bin/qbittorrent \
              /etc/docker-entrypoint.d/99-extra-scripts/*.sh \
  && apk add --no-cache --update \
-            libcrypto1.1 \
+            libcrypto3 \
             libgcc \
             libstdc++ \
             python3 \
