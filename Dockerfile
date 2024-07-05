@@ -1,7 +1,7 @@
-FROM alpine:3.19.1 AS qbittorrent-build
+FROM alpine:3.20.1 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=4.6.4
-ARG QBITTORRENT_SHA_512=9baee0f72890d5fdea77d8e7289012512f8fab3f4742adf4fc8d628a36ea4264f98ce43b15084ec188a93824d20f1f85de810d04bb5e804ac16eb696fb615061
+ARG QBITTORRENT_VERSION=4.6.5
+ARG QBITTORRENT_SHA_512=dcb8be0756815c4d6e9054de3f34a025c29897fc214547208af17bc47cb949adcfc616682eadd24f2082d452e08ddfee3dfeaf6b50ae7b1ee86028216462e06d
 
 ARG LIBTORRENT_VERSION=2.0.10
 ARG LIBTORRENT_SHA_512=a6406ccdd1d0c8d42543419a3b9edca880ab85e0849bfba29e3b1bd98f9630244aa3e88110cdf95e476792c9ea87a141fcb16a8c3b3e0c44c0076ebf6f9adbee
@@ -49,7 +49,7 @@ RUN cd /tmp \
  && cmake --install build
 
 
-FROM alpine:3.19.1 AS ipfilter-build
+FROM alpine:3.20.1 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
@@ -60,7 +60,7 @@ RUN apk add --no-cache --update \
  && ./ipfilter.sh
 
 
-FROM padhihomelab/alpine-base:3.19.1_0.19.0_0.2
+FROM padhihomelab/alpine-base:3.20.1_0.19.0_0.2
 
 
 COPY --from=qbittorrent-build \

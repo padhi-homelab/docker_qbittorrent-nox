@@ -1,7 +1,14 @@
-# docker_qbittorrent-nox <a href='https://github.com/padhi-homelab/docker_qbittorrent-nox/actions?query=workflow%3A%22Docker+CI+Release+%28Latest%29%22'><img align='right' src='https://img.shields.io/github/actions/workflow/status/padhi-homelab/docker_qbittorrent-nox/docker-release-latest.yml?branch=master&logo=github&logoWidth=24&style=flat-square'></img></a> <a href='https://github.com/padhi-homelab/docker_qbittorrent-nox/actions?query=workflow%3A%22Docker+CI+Release+%28Core%29%22'><img align='right' src='https://img.shields.io/github/actions/workflow/status/padhi-homelab/docker_qbittorrent-nox/docker-release-core.yml?branch=master&logo=github&logoWidth=24&style=flat-square'></img></a>
+# docker_qbittorrent-nox
 
-<a href='https://hub.docker.com/r/padhihomelab/qbittorrent-nox'><img src='https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest?label=size%20%5Blatest%5D&logo=docker&logoWidth=24&style=for-the-badge'></img></a>
-<a href='https://hub.docker.com/r/padhihomelab/qbittorrent-nox'><img src='https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest-core?label=size%20%5Bcore%5D&logo=docker&logoWidth=24&style=for-the-badge'></img></a>
+[![build status](https://img.shields.io/github/actions/workflow/status/padhi-homelab/docker_qbittorrent-nox/docker-release-latest.yml?label=BUILD&branch=main&logo=github&logoWidth=24&style=flat-square)](https://github.com/padhi-homelab/docker_qbittorrent-nox/actions/workflows/docker-release-latest.yml)
+[![testing size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing?label=SIZE%20%5Btesting%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
+[![latest-core size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest-core?label=SIZE%20%5Blatest-core%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
+[![latest size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest?label=SIZE%20%5Blatest%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
+  
+[![latest version](https://img.shields.io/docker/v/padhihomelab/qbittorrent-nox/latest?label=LATEST&logo=linux-containers&logoWidth=20&labelColor=darkmagenta&color=gold&style=for-the-badge)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
+[![image pulls](https://img.shields.io/docker/pulls/padhihomelab/qbittorrent-nox?label=PULLS&logo=data:image/svg%2bxml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZyBmaWxsPSIjZmZmIj4KICAgIDxwYXRoIGQ9Ik0yMC41ODcsMTQuNjEzLDE4LDE3LjI0NlY5Ljk4QTEuOTc5LDEuOTc5LDAsMCwwLDE2LjAyLDhoLS4wNEExLjk3OSwxLjk3OSwwLDAsMCwxNCw5Ljk4djYuOTYzbC0uMjYtLjA0Mi0yLjI0OC0yLjIyN2EyLjA5MSwyLjA5MSwwLDAsMC0yLjY1Ny0uMjkzQTEuOTczLDEuOTczLDAsMCwwLDguNTgsMTcuNGw2LjA3NCw2LjAxNmEyLjAxNywyLjAxNywwLDAsMCwyLjgzMywwbDUuOTM0LTZhMS45NywxLjk3LDAsMCwwLDAtMi44MDZBMi4wMTYsMi4wMTYsMCwwLDAsMjAuNTg3LDE0LjYxM1oiLz4KICAgIDxwYXRoIGQ9Ik0xNiwwQTE2LDE2LDAsMSwwLDMyLDE2LDE2LDE2LDAsMCwwLDE2LDBabTAsMjhBMTIsMTIsMCwxLDEsMjgsMTYsMTIuMDEzLDEyLjAxMywwLDAsMSwxNiwyOFoiLz4KICA8L2c+Cjwvc3ZnPgo=&logoWidth=20&labelColor=teal&color=gold&style=for-the-badge)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox)
+
+---
 
 A multiarch [qBittorrent] Docker image, based on [Alpine Linux], with level 1,2,3 IPFilter [block lists].
 
