@@ -1,7 +1,7 @@
-FROM alpine:3.20.1 AS qbittorrent-build
+FROM alpine:3.20.2 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=4.6.5
-ARG QBITTORRENT_SHA_512=dcb8be0756815c4d6e9054de3f34a025c29897fc214547208af17bc47cb949adcfc616682eadd24f2082d452e08ddfee3dfeaf6b50ae7b1ee86028216462e06d
+ARG QBITTORRENT_VERSION=5.0.1
+ARG QBITTORRENT_SHA_512=1f5c27c9b045da5c30aaf82933129c55ed2bb12cc6b1710f6e4acf9d28aee764fc3a460de14eee72da140ed9c1a4bc5a91491ecdc69dc9da1698688fb8484105
 
 ARG LIBTORRENT_VERSION=2.0.10
 ARG LIBTORRENT_SHA_512=a6406ccdd1d0c8d42543419a3b9edca880ab85e0849bfba29e3b1bd98f9630244aa3e88110cdf95e476792c9ea87a141fcb16a8c3b3e0c44c0076ebf6f9adbee
@@ -26,10 +26,12 @@ RUN cd /tmp \
             build-base \
             cmake \
             ninja \
-            openssl-dev \
+            openssl-dev>3 \
             python3-dev \
             qt6-qtbase-dev \
+            qt6-qtsvg-dev \
             qt6-qttools-dev \
+            samurai \
 # See: https://www.rasterbar.com/products/libtorrent/building.html
  && cd /tmp/libtorrent \
  && cmake -B build -G Ninja \
@@ -41,15 +43,15 @@ RUN cd /tmp \
  && cd /tmp/qbittorrent \
  && cmake -B build -G Ninja \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
           -DGUI=OFF \
+          -DWEBUI=ON \
           -DSTACKTRACE=OFF \
-          -DQT6=ON \
+          -DTESTING=OFF \
  && cmake --build build \
  && cmake --install build
 
 
-FROM alpine:3.20.1 AS ipfilter-build
+FROM alpine:3.20.2 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
@@ -60,7 +62,7 @@ RUN apk add --no-cache --update \
  && ./ipfilter.sh
 
 
-FROM padhihomelab/alpine-base:3.20.1_0.19.0_0.2
+FROM padhihomelab/alpine-base:3.20.2_0.19.0_0.2
 
 
 COPY --from=qbittorrent-build \
