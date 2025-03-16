@@ -1,8 +1,11 @@
 # docker_qbittorrent-nox
 
 [![build status](https://img.shields.io/github/actions/workflow/status/padhi-homelab/docker_qbittorrent-nox/docker-release-latest.yml?label=BUILD&branch=main&logo=github&logoWidth=24&style=flat-square)](https://github.com/padhi-homelab/docker_qbittorrent-nox/actions/workflows/docker-release-latest.yml)
-[![testing size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing?label=SIZE%20%5Btesting%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
+&dot;
+[![testing-leech size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing-leech?label=SIZE%20%5Btesting-leech%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
 [![leech size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest-leech?label=SIZE%20%5Blatest-leech%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
+&dot;
+[![testing size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing?label=SIZE%20%5Btesting%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
 [![latest size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest?label=SIZE%20%5Blatest%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
   
 [![latest version](https://img.shields.io/docker/v/padhihomelab/qbittorrent-nox/latest?label=LATEST&logo=linux-containers&logoWidth=20&labelColor=darkmagenta&color=gold&style=for-the-badge)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
