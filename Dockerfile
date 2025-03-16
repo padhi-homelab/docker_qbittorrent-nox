@@ -1,10 +1,10 @@
-FROM alpine:3.20.2 AS qbittorrent-build
+FROM alpine:3.21.3 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=5.0.1
-ARG QBITTORRENT_SHA_512=1f5c27c9b045da5c30aaf82933129c55ed2bb12cc6b1710f6e4acf9d28aee764fc3a460de14eee72da140ed9c1a4bc5a91491ecdc69dc9da1698688fb8484105
+ARG QBITTORRENT_VERSION=5.0.4
+ARG QBITTORRENT_SHA_512=f2e9630a8ff2b7bf0cbc98d3b567e130d1e8570422cb5c13b13acad60e518603c683dc55679e4b90d8eecf789e1f9b377e5b3de30c2ce482ec16dbec062fd259
 
-ARG LIBTORRENT_VERSION=2.0.10
-ARG LIBTORRENT_SHA_512=a6406ccdd1d0c8d42543419a3b9edca880ab85e0849bfba29e3b1bd98f9630244aa3e88110cdf95e476792c9ea87a141fcb16a8c3b3e0c44c0076ebf6f9adbee
+ARG LIBTORRENT_VERSION=2.0.11
+ARG LIBTORRENT_SHA_512=756fb24c44b5dcf22d0bbc06a812abc28be7388a409e577c71fb02b1ca3005040947244c0ae83bd3388264dd518119736b869397fedd7bdbcd60699b04a19969
 
 ADD https://github.com/qbittorrent/qBittorrent/archive/release-${QBITTORRENT_VERSION}.tar.gz \
     /tmp/qbittorrent.tar.gz
@@ -22,15 +22,12 @@ RUN cd /tmp \
  && tar xvzf qbittorrent.tar.gz \
  && mv qBittorrent-release-${QBITTORRENT_VERSION} qbittorrent \
  && apk add --no-cache --update \
-            boost-dev \
-            build-base \
+            boost-dev build-base \
             cmake \
             ninja \
             openssl-dev>3 \
             python3-dev \
-            qt6-qtbase-dev \
-            qt6-qtsvg-dev \
-            qt6-qttools-dev \
+            qt6-qtbase-dev qt6-qtsvg-dev qt6-qttools-dev \
             samurai \
 # See: https://www.rasterbar.com/products/libtorrent/building.html
  && cd /tmp/libtorrent \
@@ -51,7 +48,7 @@ RUN cd /tmp \
  && cmake --install build
 
 
-FROM alpine:3.20.2 AS ipfilter-build
+FROM alpine:3.21.3 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
@@ -62,7 +59,7 @@ RUN apk add --no-cache --update \
  && ./ipfilter.sh
 
 
-FROM padhihomelab/alpine-base:3.20.2_0.19.0_0.2
+FROM padhihomelab/alpine-base:3.21.3_0.19.0_0.2
 
 
 COPY --from=qbittorrent-build \
@@ -88,9 +85,7 @@ RUN chmod +x /usr/bin/qbittorrent-nox \
             libcrypto3 \
             libgcc \
             libstdc++ \
-            python3 \
             qt6-qtbase \
-            tzdata \
             zlib
 
 

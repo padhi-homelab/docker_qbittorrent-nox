@@ -1,0 +1,40 @@
+diff --git a/src/peer_connection.cpp b/src/peer_connection.cpp
+index 0888a32eb..e488d4901 100644
+--- a/src/peer_connection.cpp
++++ b/src/peer_connection.cpp
+@@ -1016,6 +1016,7 @@ namespace libtorrent {
+ 
+ 	void peer_connection::announce_piece(piece_index_t const index)
+ 	{
++		return;
+ 		TORRENT_ASSERT(is_single_thread());
+ 		// dont announce during handshake
+ 		if (in_handshake()) return;
+@@ -1790,6 +1791,7 @@ namespace libtorrent {
+ 
+ 	void peer_connection::incoming_interested()
+ 	{
++		return;
+ 		TORRENT_ASSERT(is_single_thread());
+ 		INVARIANT_CHECK;
+ 
+diff --git a/test/bittorrent_peer.cpp b/test/bittorrent_peer.cpp
+index 8750599f6..f49ac15c8 100644
+--- a/test/bittorrent_peer.cpp
++++ b/test/bittorrent_peer.cpp
+@@ -526,6 +526,7 @@ bool peer_conn::verify_piece(int piece, int start, char const* ptr, int size)
+ */
+ void peer_conn::write_piece(int piece, int start, int length)
+ {
++	return;
+ 	using namespace lt::aux;
+ 
+ //	generate_block(write_buffer, piece, start, length);
+@@ -545,6 +546,7 @@ void peer_conn::write_piece(int piece, int start, int length)
+ 
+ void peer_conn::write_have(int piece)
+ {
++	return;
+ 	using namespace lt::aux;
+ 
+ 	char* ptr = write_buf_proto.data();
