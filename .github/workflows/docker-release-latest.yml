@@ -76,12 +76,12 @@ jobs:
         uses: anchore/scan-action@v6
         with:
           image: "${{ steps.prepare.outputs.image }}:${{ steps.prepare.outputs.version }}"
-          acs-report-enable: true
           fail-build: false
           severity-cutoff: "critical"
       -
         name: "Anchore Scan: Report"
         uses: github/codeql-action/upload-sarif@v3
+        continue-on-error: true
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
       -
@@ -104,10 +104,10 @@ jobs:
         name: "Docker Hub: Update description"
         if: success() && github.event_name != 'pull_request'
         uses: peter-evans/dockerhub-description@v4
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          DOCKERHUB_REPOSITORY: ${{ steps.prepare.outputs.image }}
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          repository: ${{ steps.prepare.outputs.image }}
       -
         name: "Clean up"
         if: always()
