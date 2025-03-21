@@ -3,9 +3,8 @@
 [![build status](https://img.shields.io/github/actions/workflow/status/padhi-homelab/docker_qbittorrent-nox/docker-release-latest.yml?label=BUILD&branch=main&logo=github&logoWidth=24&style=flat-square)](https://github.com/padhi-homelab/docker_qbittorrent-nox/actions/workflows/docker-release-latest.yml)
 &dot;
 [![testing-leech size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing-leech?label=SIZE%20%5Btesting-leech%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
-[![leech size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest-leech?label=SIZE%20%5Blatest-leech%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
-&dot;
 [![testing size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing?label=SIZE%20%5Btesting%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
+&dot;
 [![latest size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest?label=SIZE%20%5Blatest%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
   
 [![latest version](https://img.shields.io/docker/v/padhihomelab/qbittorrent-nox/latest?label=LATEST&logo=linux-containers&logoWidth=20&labelColor=darkmagenta&color=gold&style=for-the-badge)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
@@ -23,7 +22,7 @@ A multiarch [qBittorrent] Docker image, based on [Alpine Linux], with level 1,2,
 >
 > The _`-leech` images_ contain patches that disable ALL uploads.
 > The builds are only intended for testing purposes;
-> trackers WILL BAN YOU if you use these builds.
+> trackers WILL BAN YOU, [unless you are Meta][meta-no-seeding].
 
 ## Usage
 
@@ -49,6 +48,7 @@ The default login is:
 _<More details to be added soon>_
 
 
-[Alpine Linux]: https://alpinelinux.org/
-[block lists]:  https://www.iblocklist.com/lists
-[qBittorrent]:  https://www.qbittorrent.org/
+[Alpine Linux]:    https://alpinelinux.org/
+[block lists]:     https://www.iblocklist.com/lists
+[qBittorrent]:     https://www.qbittorrent.org/
+[meta-no-seeding]: https://torrentfreak.com/meta-says-it-made-sure-not-to-seed-any-pirated-books/
