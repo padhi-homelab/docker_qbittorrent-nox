@@ -1,7 +1,7 @@
 FROM alpine:3.21.3 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=5.0.4
-ARG QBITTORRENT_SHA_512=f2e9630a8ff2b7bf0cbc98d3b567e130d1e8570422cb5c13b13acad60e518603c683dc55679e4b90d8eecf789e1f9b377e5b3de30c2ce482ec16dbec062fd259
+ARG QBITTORRENT_VERSION=5.1.0
+ARG QBITTORRENT_SHA_512=7f693dc2069598e7b7b6f377107e82e6c74d8415c9d5f4feea07a8f71df99d68d7c6876f4d1d917239dcb7ca8b6d6bc195ccd2fa7d9afb91047f6105631000bc
 
 ARG LIBTORRENT_VERSION=2.0.11
 ARG LIBTORRENT_SHA_512=756fb24c44b5dcf22d0bbc06a812abc28be7388a409e577c71fb02b1ca3005040947244c0ae83bd3388264dd518119736b869397fedd7bdbcd60699b04a19969
@@ -42,6 +42,8 @@ RUN cd /tmp \
  && cmake --build build \
  && cmake --install build \
 # See: https://git.alpinelinux.org/aports/tree/community/qbittorrent/APKBUILD
+ && export CFLAGS="$CFLAGS -DNDEBUG -O2 -flto=auto" \
+ && export CXXFLAGS="$CXXFLAGS -DNDEBUG -O2 -flto=auto" \
  && cd /tmp/qbittorrent \
  && cmake -B build -G Ninja \
           -DCMAKE_BUILD_TYPE=Release \
