@@ -1,7 +1,7 @@
-FROM alpine:3.21.3 AS qbittorrent-build
+FROM alpine:3.22.2 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=5.1.0
-ARG QBITTORRENT_SHA_512=7f693dc2069598e7b7b6f377107e82e6c74d8415c9d5f4feea07a8f71df99d68d7c6876f4d1d917239dcb7ca8b6d6bc195ccd2fa7d9afb91047f6105631000bc
+ARG QBITTORRENT_VERSION=5.1.3
+ARG QBITTORRENT_SHA_512=0c205aff319c24018d50bb0ba828e56c6b16d4de8f8ebb554ebf4c8df6bc722319bb002ece4a2876ab27e27800b5164ce5a233c4a6ed5a9d35bccb173cae4ceb
 
 ARG LIBTORRENT_VERSION=2.0.11
 ARG LIBTORRENT_SHA_512=756fb24c44b5dcf22d0bbc06a812abc28be7388a409e577c71fb02b1ca3005040947244c0ae83bd3388264dd518119736b869397fedd7bdbcd60699b04a19969
@@ -27,7 +27,7 @@ RUN cd /tmp \
             ninja \
             openssl-dev>3 \
             python3-dev \
-            qt6-qtbase-dev qt6-qtsvg-dev qt6-qttools-dev \
+            qt6-qtbase-dev qt6-qtbase-private-dev qt6-qtsvg-dev qt6-qttools-dev \
             samurai \
 # See: https://www.rasterbar.com/products/libtorrent/building.html
  && cd /tmp/libtorrent \
@@ -50,7 +50,7 @@ RUN cd /tmp \
  && cmake --install build
 
 
-FROM alpine:3.21.3 AS ipfilter-build
+FROM alpine:3.22.2 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
@@ -61,7 +61,7 @@ RUN apk add --no-cache --update \
  && ./ipfilter.sh
 
 
-FROM padhihomelab/alpine-base:3.21.3_0.19.0_0.2
+FROM padhihomelab/alpine-base:3.22.2_0.19.0_0.2
 
 
 COPY --from=qbittorrent-build \
