@@ -2,7 +2,6 @@
 
 [![build status](https://img.shields.io/github/actions/workflow/status/padhi-homelab/docker_qbittorrent-nox/docker-release-latest.yml?label=BUILD&branch=main&logo=github&logoWidth=24&style=flat-square)](https://github.com/padhi-homelab/docker_qbittorrent-nox/actions/workflows/docker-release-latest.yml)
 &dot;
-[![testing-leech size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing-leech?label=SIZE%20%5Btesting-leech%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
 [![testing size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/testing?label=SIZE%20%5Btesting%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
 &dot;
 [![latest size](https://img.shields.io/docker/image-size/padhihomelab/qbittorrent-nox/latest?label=SIZE%20%5Blatest%5D&logo=docker&logoWidth=24&style=flat-square)](https://hub.docker.com/r/padhihomelab/qbittorrent-nox/tags)
@@ -17,12 +16,6 @@ A multiarch [qBittorrent] Docker image, based on [Alpine Linux], with level 1,2,
 |           386            |       amd64        |          arm/v6          |       arm/v7       |       arm64        |         ppc64le          |          s390x           |
 | :----------------------: | :----------------: | :----------------------: | :----------------: | :----------------: | :----------------------: | :----------------------: |
 | :heavy_multiplication_x: | :heavy_check_mark: | :heavy_multiplication_x: | :heavy_check_mark: | :heavy_check_mark: | :heavy_multiplication_x: | :heavy_multiplication_x: |
-
-> [!WARNING]  
->
-> The _`-leech` images_ contain patches that disable ALL uploads.
-> The builds are only intended for testing purposes;
-> trackers WILL BAN YOU, [unless you are Meta][meta-no-seeding].
 
 ## Usage
 
