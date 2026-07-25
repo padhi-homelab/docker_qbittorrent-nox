@@ -1,10 +1,10 @@
-FROM alpine:3.24.0 AS qbittorrent-build
+FROM alpine:3.24.1 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=5.2.2
-ARG QBITTORRENT_SHA_512=9cd7ad5302be5b140fa1c37824c41642e4123ae8a7bcfbb4bec2ad7dda06737c28d950410949d051f261f9bbc9f8dfb3cd316e6a1c8ca903a796ff56011296f7
+ARG QBITTORRENT_VERSION=5.2.3
+ARG QBITTORRENT_SHA_512=715ebf545634719e3ee8d3921751cf4038b979dbfadfc62757d3bc2503c27846a4fe671baa8ce8b38a8193767016cbda0cbcc9420c59f8d7004e860eea5e50df
 
-ARG LIBTORRENT_VERSION=2.0.13
-ARG LIBTORRENT_SHA_512=4cbae495385bc3739df47faffb41791ff99c4b09a6e31a88eb6176d22519684de90fadd4dfd3f12608e97ea49c7a8a44a247351e3c49720c7435d8a5c9a411ab
+ARG LIBTORRENT_VERSION=2.1.0
+ARG LIBTORRENT_SHA_512=382b16dc7e1afbdb18caa0523997c7e7c7074589a97a3d790fa41fda1a8be61ff07bd3f7471be13f9ea84009832ab1e00fe52a3ac19e1cea47b1b8c0096d7db0
 
 ADD https://github.com/qbittorrent/qBittorrent/archive/release-${QBITTORRENT_VERSION}.tar.gz \
     /tmp/qbittorrent.tar.gz
@@ -50,7 +50,7 @@ RUN cd /tmp \
  && cmake --install build
 
 
-FROM alpine:3.24.0 AS ipfilter-build
+FROM alpine:3.24.1 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
@@ -61,7 +61,7 @@ RUN apk add --no-cache --update \
  && ./ipfilter.sh
 
 
-FROM padhihomelab/alpine-base:3.24.0_0.19.0_0.3
+FROM padhihomelab/alpine-base:3.24.1_0.19.0_0.3
 
 
 COPY --from=qbittorrent-build \
