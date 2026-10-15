@@ -1,4 +1,4 @@
-FROM alpine:3.24.1 AS qbittorrent-build
+FROM alpine:3.24.2 AS qbittorrent-build
 
 ARG QBITTORRENT_VERSION=5.2.3
 ARG QBITTORRENT_SHA_512=715ebf545634719e3ee8d3921751cf4038b979dbfadfc62757d3bc2503c27846a4fe671baa8ce8b38a8193767016cbda0cbcc9420c59f8d7004e860eea5e50df
@@ -50,7 +50,7 @@ RUN cd /tmp \
  && cmake --install build
 
 
-FROM alpine:3.24.1 AS ipfilter-build
+FROM alpine:3.24.2 AS ipfilter-build
 
 RUN apk add --no-cache --update \
     bash \
