@@ -1,7 +1,7 @@
 FROM alpine:3.24.2 AS qbittorrent-build
 
-ARG QBITTORRENT_VERSION=5.2.4
-ARG QBITTORRENT_SHA_512=f5f8f9f4bc9cc587db2d00c4bbb246289fd308f9c2db427bfd7cc22a61776e3a080c7d13e41e6ebc53616ed3dfdc31e70fbbe6288ad87beb2a370efdc4f1e86c
+ARG QBITTORRENT_VERSION=5.3.0
+ARG QBITTORRENT_SHA_512=051d49224cd23cc2cf3f97ebb9f8a64f54ed9194ff07c6d2fd9a6ef65fbd5e946172a9f0ad9dea53994fee4d47d2b9122486df80b48df9c044c6739e3e98bef4
 
 ARG LIBTORRENT_VERSION=2.1.2
 ARG LIBTORRENT_SHA_512=b15865340d74b88f52d9509975fe7bac62f1f2917be08be75809e3afa4ab2adbab53743403d9a499c646804b9ab5dcc3c6a78a57913eb74097970f2d931e320d
@@ -29,16 +29,21 @@ RUN cd /tmp \
             python3-dev \
             qt6-qtbase-dev qt6-qtbase-private-dev qt6-qtsvg-dev qt6-qttools-dev \
             samurai \
-# See: https://www.rasterbar.com/products/libtorrent/building.html
+ && export CFLAGS="$CFLAGS -DNDEBUG -O2 -flto=auto" \
+ && export CXXFLAGS="$CXXFLAGS -DNDEBUG -O2 -flto=auto" \
+ # See: https://www.rasterbar.com/products/libtorrent/building.html
  && cd /tmp/libtorrent \
  && cmake -B build -G Ninja \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_CXX_STANDARD=17 \
+          -Dpython-bindings=ON \
+          -Dpython-egg-info=ON \
+          -DNO_EXAMPLES=ON \
+          -DNO_TESTS=ON \
+          -Dwebtorrent=OFF \
  && cmake --build build \
  && cmake --install build \
-# See: https://git.alpinelinux.org/aports/tree/community/qbittorrent/APKBUILD
- && export CFLAGS="$CFLAGS -DNDEBUG -O2 -flto=auto" \
- && export CXXFLAGS="$CXXFLAGS -DNDEBUG -O2 -flto=auto" \
+ # See: https://git.alpinelinux.org/aports/tree/community/qbittorrent/APKBUILD
  && cd /tmp/qbittorrent \
  && cmake -B build -G Ninja \
           -DCMAKE_BUILD_TYPE=Release \
