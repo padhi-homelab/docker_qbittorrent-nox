@@ -66,7 +66,7 @@ RUN apk add --no-cache --update \
  && ./ipfilter.sh
 
 
-FROM padhihomelab/alpine-base:3.24.3_0.19.0_0.3
+FROM padhihomelab/alpine-base:3.24.4_0.19.0_0.3
 
 
 COPY --from=qbittorrent-build \
